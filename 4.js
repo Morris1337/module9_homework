@@ -11,7 +11,7 @@ function imgSize(){
 
   if (width >= 100 && width <= 300 && height >= 100 && height <= 300 && !isNaN(width) && !isNaN(height)) {
 
-    fetch(`https://www.instagram.com/${width}/${height}`)
+    fetch(`https://picsum.photos/${width}/${height}`)
     .then((data) => {
         console.log(data)
         displayImg(data.url);
@@ -26,9 +26,9 @@ function imgSize(){
 }
 
 function displayImg(image){
-    const photos = document.createElement("img");
-    photos.src = image
-    result.appendChild(photos)
+  const photos = document.createElement("img")
+  photos.src = image
+  result.appendChild(photos)
 }
 
 button.addEventListener("click", (event)=>{
