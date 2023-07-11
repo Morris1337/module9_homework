@@ -20,23 +20,28 @@ const objects =
   </student>
 </list>`
 
-const objectsDOM = parser.parseFromString(objects, "text/xml");;
+const objectsDOM = parser.parseFromString(objects, "text/xml");
 
-const student = objectsDOM.querySelector("student")
-const name = student.querySelector("name")
-const firstName = student.querySelector("first")
-const secondName = student.querySelector("second")
-const age = student.querySelector("age")
-const prof = student.querySelector("prof")
+const studentElements = objectsDOM.getElementsByTagName("student");
 
-const langAtt = name.getAttribute("lang")
+const studentList = [];
 
-const result = {
-    firstName: firstName.textContent,
-    secondName: secondName.textContent,
-    age: Number(age.textContent),
-    prof: prof.textContent,
-    lang: langAtt
+for(let i = 0; i < studentElements.length; i++){
+const studentElement = studentElements[i];
+
+  const name = studentElement.querySelector("name");
+  const firstName = name.querySelector("first").textContent;
+  const secondName = name.querySelector("second").textContent;
+  const age = parseInt(studentElement.querySelector("age").textContent);
+  const prof = studentElement.querySelector("prof").textContent;
+  const lang = name.getAttribute("lang");
+
+const student = {
+    name: `${firstName} ${secondName}`,
+    age,
+    prof,
+    lang
+};
+studentList.push(student);
 }
-
-console.log(`name: ${result.firstName} ${result.secondName}, age: ${result.age}, prof: ${result.prof}, lang: ${result.lang}`)
+console.log(studentList);

@@ -1,0 +1,13 @@
+#result{
+    margin-top: 10px;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(4, 410px);
+    column-gap: 3px;
+    row-gap: 8px;
+
+}
+
+img{
+    width: 400px;
+}
